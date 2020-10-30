@@ -8,7 +8,7 @@ The **goal** is to build a web-scraper to scrape music lyrics, preprocess the ob
 First, I scraped lyrics of Metallica and Iron Maiden from [lyrics.com](www.lyrics.com) and built a Naive Bayes Classifier that predicted the artist from lyrics with a 68% accuracy. 
 
 ## Files
-- The list of songs and lyrics is not included, for copyright purposes.
-- Web-scraper
-- Text preprocessing with spacy, NLTK, TextHero
+- [Web-scraper](https://github.com/lorenanda/lyrics-classification/blob/main/classifier.ipynb)
+- [Text preprocessing with spacy, NLTK, TextHero](https://github.com/lorenanda/lyrics-classification/blob/main/preprocessing.ipynb)
 - [Naive Bayes Classifier](https://github.com/lorenanda/lyrics-classification/blob/main/classifier.ipynb)
+- The list of songs and lyrics is not included, for copyright purposes.
