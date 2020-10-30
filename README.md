@@ -4,8 +4,8 @@ This project was completed in week 4 of the Data Science Bootcamp at Spiced Acad
 
 The **goal** is to build a web-scraper to scrape music lyrics, preprocess the obtained text, then build a Naive-Bayes Classifier to predict the artist from the lyrics.
 
-## Data
-First, I scraped lyrics of Metallica and Iron Maiden from [lyrics.com](www.lyrics.com) and built a Naive Bayes Classifier that predicted the artist from lyrics with a 68% accuracy. 
+## Results
+The built web-scraper scraped around 100 song lyrics of Metallica and Iron Maiden from [lyrics.com](www.lyrics.com). I used this text data to train a Multinomial Naive Bayes Classifier, which predicted the artist from lyrics with 68% accuracy.
 
 ## Files
 - [Web-scraper](https://github.com/lorenanda/lyrics-classification/blob/main/classifier.ipynb)
