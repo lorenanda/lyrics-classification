@@ -11,7 +11,7 @@ The built web-scraper scraped around 100 song lyrics of Metallica and Iron Maide
 - [Web-scraper](https://github.com/lorenanda/lyrics-classification/blob/main/classifier.ipynb)
 - [Text preprocessing with spaCy, NLTK, TextHero](https://github.com/lorenanda/lyrics-classification/blob/main/preprocessing.ipynb)
 - [Naive Bayes Classifier](https://github.com/lorenanda/lyrics-classification/blob/main/classifier.ipynb)
-- [Linguistic analysis with spaCy and NLTK]
+- [Linguistic analysis with spaCy and NLTK](https://github.com/lorenanda/lyrics-classification/blob/main/text_analysis_lyrics.ipynb)
 - The list of songs and lyrics is not included, for copyright purposes.
 
 ## Demo
