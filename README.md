@@ -15,6 +15,6 @@ The built web-scraper scraped around 100 song lyrics of Metallica and Iron Maide
 - The list of songs and lyrics is not included, for copyright purposes.
 
 ## Demo
-
+![demo](https://github.com/lorenanda/lyrics-classification/blob/main/lyrics_predictor_demo.gif)
 
 ## How to use
