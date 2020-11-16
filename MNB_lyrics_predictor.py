@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, Tf
 """
 Prediction model for input lyrics
 """
-df = pd.read_csv('/home/lorena/Documents/bootcamp/W04/lyrics_artists_clean.csv')
+df = pd.read_csv('/path/to/lyrics_artists_clean.csv')
 
 X = df['lyrics_clean']
 y = df['artist']
