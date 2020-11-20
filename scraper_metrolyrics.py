@@ -7,15 +7,17 @@ import requests
 import pandas as pd
 import csv
 from bs4 import BeautifulSoup
-import texthero as hero
-import spacy
 import re
 from pyfiglet import Figlet
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
-from sklearn.naive_bayes import MultinomialNB
+
+
+
+""" 
+Program that scrapes lyrics from metrolyrics.com
+"""
 
 HEADERS = {'headers': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0"}
-BASE_URL = f"https://www.metrolyrics.com/{band}-lyrics.html"
+BASE_URL = "https://www.metrolyrics.com/"
 
 
 """
@@ -23,85 +25,73 @@ This function scrapes the lyrics links
 of an artist page and exports them in a csv file.
 """
 songs_urls = []
+
 def get_artist_link(artist):
     for artist in artist_input:
-        #songs_urls = []
         artist_soup = BeautifulSoup(requests.get(f"https://www.metrolyrics.com/{artist}-lyrics.html").text,'html.parser')
-            
+
         for td in artist_soup.find_all('td'):
             for a in td.find_all('a'):
                 songs_urls.append(a['href'])
         
-        pd.DataFrame(songs_urls).to_csv(f'{artist}_songurls.csv', sep='\t', index=False)
+        pd.DataFrame(songs_urls).to_csv(f'data/{artist}_songurls.csv', sep='\t', index=False)
         
-        time.sleep(1)
-
+        time.sleep(2)
 
 
 """
 This function scrapes the lyrics of each song in the artist list.
 """
+
 lyrics = []
 artist_name = []
+
 def get_lyrics(artist):
     for s in songs_urls:
-        time.sleep(1)
         lyrics_soup = BeautifulSoup(requests.get(s).text,'html.parser')
-            
+
         for v in lyrics_soup.find_all(attrs={'class':'verse'}):
             lyrics.append(v.get_text())
-        
-        for b in lyrics_soup.find_all('h2'):
-            artist_name.append(b.get_text())
-        
-        df = pd.DataFrame(list(zip(lyrics, artist_name)), columns=['lyrics','artist'])
+            artist_name.append(lyrics_soup.find('h2').get_text())
 
-        with open(f'{artist}_metrolyrics.txt', 'w') as f:
-            f.writelines(lyrics)
+            with open(f'./data/{artist}_metrolyrics.txt', 'w') as f:
+                f.writelines(lyrics)
 
-
-# Clean the lyrics
-def clean_text(review, model):
-    new_doc = ''
-    doc = model(review)
-    for word in doc:
-        if not word.is_stop and word.is_alpha:
-            new_doc = f'{new_doc} {word.lemma_.lower()}'
-    return new_doc
-
+        time.sleep(1)
 
 
 """
-Command line interface
+Command line interface where the user 
+can choose which artists to scrape
 """
+
 fig = Figlet(font='slant')
-print(fig.renderText('Scrape & Predict'))
-artist_input = ['the-knife']
+print(fig.renderText('Lyrics Scraper'))
+print("What artist's song lyrics do you want to get?\n")
 
+artist_input = []
+user_input = input()
 
-"""
-Prediction model for input lyrics
-"""
-df = pd.read_csv('/home/lorena/Documents/bootcamp/W04/lyrics_artists_clean.csv')
-
-X = df['lyrics_clean']
-y = df['artist']
-    
-tfv = TfidfVectorizer()
-    
-X_tfv = tfv.fit_transform(X)
-X_vec = pd.DataFrame(X_tfv.todense(), columns=tfv.get_feature_names())
-    
-mnb = MultinomialNB()
-mnb.fit(X_vec, y)
-mnb_score = mnb.score(X_vec, y)
-
-#  
-while True:
-    text = []
-    lyrics_input = input('Write some lyrics: ').lower()
-    text.append(lyrics_input)
-    text_trans = tfv.transform(text)
-    text_vector = pd.DataFrame(text_trans.todense(), columns=tfv.get_feature_names())
-    mnb_pred = mnb.predict(text_vector)
-    print('This sounds like '+str(mnb_pred[0]).replace('-', ' '))
+if user_input in artist_input:
+    print("This artist is already in the database.\nDo you want to scrape another one? (y/n)")
+    # answer_input1 = input()
+    # if answer_input1 == "n":
+    #      break
+    # elif answer_input1 == "yes":
+    #     continue
+else:
+    print(f"OK, scraping {user_input}...")
+    artist_input.append(user_input)
+    get_artist_link(artist_input)
+    print("Finished scraping the links!")
+    print("Scraping lyrics...")
+    get_lyrics(artist_input)
+    print("Finished scraping the lyrics!\nDo you want to scrape another artist? (y/n)")
+    answer_input = input()
+    if answer_input == "n":
+        print("OK, then my job is done.")
+    elif answer_input == "y":
+        print("Maybe later.")
+    else:
+        print("Nonsense! Just give me a y for yes or n for no.")
+        
