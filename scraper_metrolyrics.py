@@ -1,20 +1,27 @@
-from bs4 import BeautifulSoup
-import requests
+""" 
+Program that scrapes lyrics from metrolyrics.com
+"""
+
 import time
+import requests
+import pandas as pd
+import csv
+from bs4 import BeautifulSoup
 import texthero as hero
 import spacy
 import re
-import pandas as pd
-import csv
 from pyfiglet import Figlet
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 
-headers = {'headers': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0"}
-#base_url = f"https://www.metrolyrics.com/{band}-lyrics.html
+HEADERS = {'headers': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0"}
+BASE_URL = f"https://www.metrolyrics.com/{band}-lyrics.html"
 
 
-# Get a list of song links
+"""
+This function scrapes the lyrics links
+of an artist page and exports them in a csv file.
+"""
 songs_urls = []
 def get_artist_link(artist):
     for artist in artist_input:
@@ -31,7 +38,9 @@ def get_artist_link(artist):
 
 
 
-# Get a list of song lyrics
+"""
+This function scrapes the lyrics of each song in the artist list.
+"""
 lyrics = []
 artist_name = []
 def get_lyrics(artist):
