@@ -4,11 +4,19 @@ from pyfiglet import Figlet
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_val_score
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
+import scraper_metrolyrics
 
 """
 Prediction model for input lyrics
 """
-df = pd.read_csv('/path/to/lyrics_artists_clean.csv')
+
+df["artist"] = artist_name
+df["lyrics"] = lyrics
+
+def clean_text(text):
+    new_text = ""
+    hero.clean(df['lyrics'])
+    return new_text
 
 X = df['lyrics_clean']
 y = df['artist']

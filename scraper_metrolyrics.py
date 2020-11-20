@@ -5,16 +5,9 @@ Program that scrapes lyrics from metrolyrics.com
 import time
 import requests
 import pandas as pd
-import csv
 from bs4 import BeautifulSoup
-import re
 from pyfiglet import Figlet
 
-
-
-""" 
-Program that scrapes lyrics from metrolyrics.com
-"""
 
 HEADERS = {'headers': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0"}
 BASE_URL = "https://www.metrolyrics.com/"
@@ -24,11 +17,14 @@ BASE_URL = "https://www.metrolyrics.com/"
 This function scrapes the lyrics links
 of an artist page and exports them in a csv file.
 """
+
 songs_urls = []
 
 def get_artist_link(artist):
     for artist in artist_input:
-        artist_soup = BeautifulSoup(requests.get(f"https://www.metrolyrics.com/{artist}-lyrics.html").text,'html.parser')
+        artist_soup = BeautifulSoup(
+            requests.get(f"https://www.metrolyrics.com/{artist}-lyrics.html").text, 
+            'html.parser')
 
         for td in artist_soup.find_all('td'):
             for a in td.find_all('a'):
@@ -94,4 +90,3 @@ else:
         print("Maybe later.")
     else:
         print("Nonsense! Just give me a y for yes or n for no.")
-        

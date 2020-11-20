@@ -1,1 +1,4 @@
-*.data
+.vscode
+*/data
+*.ipynb
+!textanalysis:lyrics.ipynb
