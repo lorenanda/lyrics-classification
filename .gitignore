@@ -1,4 +1,4 @@
-.vscode
-*/data
+.vscode/
+data/
 *.ipynb
-!textanalysis:lyrics.ipynb
+!textanalysis_lyrics.ipynb
