@@ -1,0 +1,7 @@
+pandas
+bs4
+spacy
+texthero
+sklearn
+requests
+pyfiglet
