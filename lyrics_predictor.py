@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 from pyfiglet import Figlet
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.model_selection import cross_val_score
+#from sklearn.model_selection import cross_val_score
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
-import scraper_metrolyrics
+#import webscraper
 
 """
 Prediction model for input lyrics
@@ -15,7 +15,7 @@ df["lyrics"] = lyrics
 
 def clean_text(text):
     new_text = ""
-    hero.clean(df['lyrics'])
+    df["lyrics_clean"] = hero.clean(df['lyrics'])
     return new_text
 
 X = df['lyrics_clean']
@@ -38,4 +38,4 @@ while True:
     text_trans = tfv.transform(text)
     text_vector = pd.DataFrame(text_trans.todense(), columns=tfv.get_feature_names())
     mnb_pred = mnb.predict(text_vector)
-    print('This sounds like '+str(mnb_pred[0]).replace('-', ' '))
+    print('This sounds like ' + str(mnb_pred[0]).replace('-', ' '))
