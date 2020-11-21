@@ -1,0 +1,6 @@
+*.ipynb_checkpoints
+__pychache__/
+.vscode/
+/data/*
+/notebooks/*
+!/notebooks/textanalysis_lyrics.ipynb
