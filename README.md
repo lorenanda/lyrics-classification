@@ -10,5 +10,10 @@ The goal is to build a web-scraper to scrape music lyrics, preprocess the obtain
 - [Linguistic analysis with spaCy and NLTK](https://github.com/lorenanda/lyrics-classification/blob/main/text_analysis_lyrics.ipynb)
 - The list of songs and lyrics is not included, for copyright purposes.
 
+## How to use
+1. Clone this repo: `git clone https://github.com/lorenanda/lyrics-classification.git`
+2. Install the necessary libraries: `pip install -r requirements.txt`
+3. Run `scrape_and_predict.py` and follow the bot's instructions
+
 ## Demo
 ![demo](https://github.com/lorenanda/lyrics-classification/blob/main/lyrics_predictor_demo.gif)
