@@ -78,9 +78,9 @@ print("Hi! I am a bot that can guess the artist from the lyrics.")
 print("Test me! But let me prepare first. Enter the name of an artist:")
 
 artist_input = []
-user_input = input()
+user_input = input("-> ")
 print("Enter the name of the second artist:")
-user_input2 = input()
+user_input2 = input("-> ")
 
 ask_user()
 
@@ -103,21 +103,22 @@ mnb_score = mnb.score(X_vec, y)
 def play():
     text = []
     print("Let's play! Write some lyrics:")
-    lyrics_input = input().lower()
+    lyrics_input = input("-> ").lower()
     text.append(lyrics_input)
     text_trans = tfv.transform(text)
     text_vector = pd.DataFrame(text_trans.todense(), columns=tfv.get_feature_names())
     mnb_pred = mnb.predict(text_vector)
     print('This sounds like ' + str(mnb_pred[0]).replace('-', ' ') + ". Am I right? (y/n)")
-    check_prediction = input()
+    check_prediction = input("-> ")
     if check_prediction == "y":
         print("Yay!")
     elif check_prediction == "n":
         print("Oh, that's embarrasing...")
 
+
 def play_again():
     print("Wanna play again? (y/n)")
-    ask_playagain = input()
+    ask_playagain = input("-> ")
     if ask_playagain == "y":
         play()
     elif ask_playagain == "n":
