@@ -18,4 +18,4 @@ You can read more details about this project [on my blog](https://lorenaciutacu.
 3. Run `scrape_and_predict.py` and follow the bot's instructions
 
 ## Demo
-![demo](https://github.com/lorenanda/lyrics-classification/blob/main/lyrics_predictor_demo.gif)
+<img src = "https://github.com/lorenanda/lyrics-classification/blob/main/images/demo.gif" width="450px" height="400px">
