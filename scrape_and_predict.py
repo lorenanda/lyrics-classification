@@ -115,7 +115,6 @@ def play():
     elif check_prediction == "n":
         print("Oh, that's embarrasing...")
 
-
 def play_again():
     print("Wanna play again? (y/n)")
     ask_playagain = input("-> ")
