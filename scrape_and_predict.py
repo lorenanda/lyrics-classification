@@ -102,15 +102,27 @@ mnb_score = mnb.score(X_vec, y)
 
 def play():
     text = []
-    print("Let's play! Write some lyrics: ")
+    print("Let's play! Write some lyrics:")
     lyrics_input = input().lower()
     text.append(lyrics_input)
     text_trans = tfv.transform(text)
     text_vector = pd.DataFrame(text_trans.todense(), columns=tfv.get_feature_names())
     mnb_pred = mnb.predict(text_vector)
-    print('This sounds like ' + str(mnb_pred[0]).replace('-', ' ') + ".\nAm I right? (y/n)")
+    print('This sounds like ' + str(mnb_pred[0]).replace('-', ' ') + ". Am I right? (y/n)")
     check_prediction = input()
     if check_prediction == "y":
         print("Yay!")
     elif check_prediction == "n":
         print("Oh, that's embarrasing...")
+
+def play_again():
+    print("Wanna play again? (y/n)")
+    ask_playagain = input()
+    if ask_playagain == "y":
+        play()
+    elif ask_playagain == "n":
+        print("Ok, that was fun!")
+
+if __name__ == "__main__":
+    play()
+    play_again()
