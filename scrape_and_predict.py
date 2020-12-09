@@ -113,21 +113,4 @@ def play():
     if check_prediction == "y":
         print("Yay!")
     elif check_prediction == "n":
-        print("Oh, that's embarrasing... Let me try again? (y/n)")
-
-
-def play_again():
-    elif check_prediction == "n":
-        print("Oh, that's embarrasing... Let me try again? (y/n)")
-        ask_retry = input()
-        if ask_retry == "y":
-            pass
-        elif ask_retry == "n":
-            print("OK.")
-        else:
-            print("Nonsense! Write 'y' for yes or 'n' for no.")
-
-while True:
-    play()
-    if not play_again():
-        break
+        print("Oh, that's embarrasing...")
