@@ -9,8 +9,7 @@ You can read more details about this project [on my blog](https://lorenaciutacu.
 
 ## Files
 - [Scraper and prediction game](https://github.com/lorenanda/lyrics-classification/blob/main/scrape_and_predict.py)
-- [Linguistic analysis with spaCy and NLTK](https://github.com/lorenanda/lyrics-classification/blob/main/text_analysis_lyrics.ipynb)
-- The list of songs and lyrics is not included, for copyright purposes.
+- [Linguistic analysis with spaCy and NLTK](https://github.com/lorenanda/text-analysis/blob/main/text_analysis_lyrics.ipynb)
 
 ## How to use
 1. Clone this repo: `git clone https://github.com/lorenanda/lyrics-classification.git`
