@@ -1,4 +1,6 @@
-""" Program that scrapes lyrics from metrolyrics.com"""
+""" This program scrapes lyrics from metrolyrics.com,
+makes a classification of the artists, and makes
+live predictions on input lyrics."""
 
 import time
 import requests
@@ -7,8 +9,8 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import texthero as hero
 from sklearn.naive_bayes import MultinomialNB
-#from sklearn.model_selection import cross_val_score
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
+# from sklearn.model_selection import cross_val_score
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 
 HEADERS = {'headers': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:81.0) Gecko/20100101 Firefox/81.0"}
@@ -17,11 +19,13 @@ BASE_URL = "https://www.metrolyrics.com/"
 
 songs_urls = []
 
+
 def get_artist_link(artist):
     for artist in artist_input:
         artist_soup = BeautifulSoup(
-            requests.get(f"https://www.metrolyrics.com/{artist}-lyrics.html").text, 
-            'html.parser')
+            requests.get(
+                f"https://www.metrolyrics.com/{artist}-lyrics.html").text, 
+                'html.parser')
 
         for td in artist_soup.find_all('td'):
             for a in td.find_all('a'):
@@ -99,6 +103,7 @@ X_vec = pd.DataFrame(X_tfv.todense(), columns=tfv.get_feature_names())
 mnb = MultinomialNB()
 mnb.fit(X_vec, y)
 mnb_score = mnb.score(X_vec, y)
+
 
 def play():
     text = []
